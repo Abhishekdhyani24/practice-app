@@ -1,4 +1,10 @@
+import { useNavigate } from "react-router-dom";
 const Header =()=>{
+const navigate = useNavigate()
+    function logout(){
+        sessionStorage.clear()
+        navigate('/')
+    }
     return (
 <nav className="navbar navbar-expand-lg navbar-light bg-light">
 <a className="navbar-brand" href="#">Practice</a>
@@ -26,7 +32,7 @@ const Header =()=>{
       </div>
     </li>
     <li className="nav-item">
-      <a className="nav-link disabled" href="#">Disabled</a>
+      <a className="nav-link " onClick={logout}>Logout</a>
     </li>
   </ul>
  

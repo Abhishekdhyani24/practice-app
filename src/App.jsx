@@ -6,6 +6,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Login from './pages/auth/login'
 import Home from './pages/home'
+import Users from './pages/users';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,6 +17,8 @@ function App() {
     <Routes>
     <Route  path="/" element={<Login />} />
     <Route  path="/home" element={<Home />} />
+    <Route  path="/users" element={<Users />} />
+
 
     </Routes>
     </Router>

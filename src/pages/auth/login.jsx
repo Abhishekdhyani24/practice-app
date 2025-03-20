@@ -11,7 +11,7 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [submitted, setSubmitted] = useState(false)
     const inValidEmail = methodModel.emailvalidation(email);
-    const inValidPassword = methodModel.passwordValidation(password);
+    // const inValidPassword = methodModel.passwordValidation(password);
 
     useEffect(()=>{
         if (sessionStorage.getItem("token")) {
@@ -44,7 +44,7 @@ const Login = () => {
     }
   return <div>
     <h2>Login Page</h2>
-    <form onSubmit={handleSubmit} className="border p-3">
+    <form onSubmit={handleSubmit} className="border p-3 w-50 m-auto mt-5">
   <div className="form-group">
     <label htmlFor="exampleInputEmail1">Email </label>
     <input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
@@ -56,9 +56,9 @@ const Login = () => {
   <div className="form-group">
     <label htmlFor="exampleInputPassword1">Password</label>
     <input required type="password" value={password}  onChange={(e) => setPassword(e.target.value)} className="form-control" id="exampleInputPassword1" placeholder="Password"/>
-    {password && !inValidPassword && submitted && (
+    {/* {password && !inValidPassword && submitted && (
                       <div className="text-danger">{methodModel.passwordValidationMessages(password)}</div>
-                    )}
+                    )} */}
   </div>
   {/* <div className="form-check">
     <input type="checkbox" className="form-check-input" id="exampleCheck1"/>

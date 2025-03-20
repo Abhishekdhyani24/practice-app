@@ -14,7 +14,7 @@ const Layout=({ children })=>{
                <Sidebar />
           </div>
           <main className="main">
-            <div className="mainarea ">
+            <div className="mainarea">
               {children}
             </div>
           </main>
