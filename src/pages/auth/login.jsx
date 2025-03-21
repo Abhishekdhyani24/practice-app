@@ -49,7 +49,7 @@ const Login = () => {
     <label htmlFor="exampleInputEmail1">Email </label>
     <input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
     {
-        email && !inValidEmail && submitted && (<p className="text-red-600 mb-4">Invalid Email</p>)
+        email && !inValidEmail && submitted && (<p className="text-danger mb-4">Invalid Email</p>)
     }
     <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
