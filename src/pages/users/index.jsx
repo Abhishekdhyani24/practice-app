@@ -13,11 +13,14 @@ import Swal from "sweetalert2";
 
 const Users = () => {
     const navigate = useNavigate()
+  
+    const [filters, setFilter] = useState({ page: 1, count: 10, search: "" });
+    const [userData, setUserData] = useState([]);
+    const [total,setTotal]=useState(0);
+
     useEffect(() => {
         getUserList()
-    }, [])
-    const [filters, setFilter] = useState({ page: 1, count: 10, search: "", total: 0 });
-    const [userData, setUserData] = useState([])
+    }, [filters])
 
     function getUserList() {
         loader(true);
@@ -25,7 +28,7 @@ const Users = () => {
             if (res.success) {
                 console.log(res.data, 'res.data')
                 setUserData(res.data)
-                setFilter({ total: res.total })
+                setTotal(res.total)
                 loader(false);
             }
         })
@@ -87,13 +90,12 @@ const Users = () => {
                             <th scope="col">Email</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
-
                         </tr>
                     </thead>
                     <tbody>
                         {
                             userData.length > 0 && userData.map((res, i) =>
-                                <tr>
+                                <tr key={i}>
                                     <th scope="row">{i + 1}</th>
                                     <td>{res.fullName}</td>
                                     <td>{res.role}</td>
@@ -129,13 +131,11 @@ const Users = () => {
                     <Pagination
                         activePage={filters.page}
                         itemsCountPerPage={10}
-                        totalItemsCount={filters.total}
+                        totalItemsCount={total}
                         pageRangeDisplayed={5}
-                        onChange={(e) => handlePageChange(e)}
-                        prevPageText="Previous"
-                        nextPageText="Next"
-                        itemClass="bg-white px-2 text-[#8f8f8f] rounded-md"
-                        activeClass="!bg-[#005AAB] px-2 !text-white rounded-md"
+                        onChange={(e) => handlePageChange(e)}                   
+                       itemClass="page-item"
+                       linkClass="page-link"
                     />
                 </div>
             </Layout>
