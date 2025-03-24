@@ -113,11 +113,13 @@ const UsersAdd = () => {
   return (
     <>
       <Layout>
+        <div className="d-flex justify-content-between align-item-center">
         <h2> {userId ? "Edit" : "Add"} User</h2>
         <Link to="/users">
           {" "}
-          <LuArrowBigLeft />
+          <LuArrowBigLeft  className="backIcon"/>
         </Link>
+        </div>
         <form onSubmit={handelSubmit} className="text-align-left">
           <div className="form-row ">
             <div className="form-group col-md-6 ">

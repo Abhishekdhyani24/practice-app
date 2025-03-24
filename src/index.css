@@ -102,6 +102,10 @@ button:focus-visible {
   padding: 2em;
   width: fit-content;
 }
+.backIcon {
+  font-size: 25px;
+  margin: 7px;
+}
 
 /* .dropdown_color .react-tel-input .flag-dropdown {
   background: #232323 !important;
