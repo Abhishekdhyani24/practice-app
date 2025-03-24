@@ -2,6 +2,8 @@ import {React,useEffect,useState} from 'react';
 import methodModel from "../../methods/methods";
 import { useNavigate } from "react-router-dom";
 import ApiClient from "../../methods/api";
+import "./style.scss";
+
 
 
 const Login = () => {
@@ -44,16 +46,16 @@ const Login = () => {
         }
 
     }
-  return <div>
+  return <div className="loginBody">
     <h2>Login Page</h2>
-    <form onSubmit={handleSubmit} className="border p-3 w-50 m-auto mt-5">
+    <form onSubmit={handleSubmit} className="formBody border p-3 w-50 m-auto mt-5">
+      <h4 className="text-center">Login</h4>
   <div className="form-group">
     <label htmlFor="exampleInputEmail1">Email </label>
     <input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
     {
         email && !inValidEmail && submitted && (<p className="text-danger mb-4">Invalid Email</p>)
     }
-    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <div className="form-group">
     <label htmlFor="exampleInputPassword1">Password</label>
@@ -66,7 +68,9 @@ const Login = () => {
     <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
     <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
   </div> */}
-  <button type="submit" className="btn btn-primary mt-2">Submit</button>
+  <div className="text-center mt-2">
+  <button type="submit" className="btn btn-primary mt-2 ">Submit</button>
+  </div>
 </form>
   </div>;
 };
