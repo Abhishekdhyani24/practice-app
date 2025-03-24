@@ -20,11 +20,11 @@ const Login = () => {
     })
 
     function handleSubmit(e) {
+      console.log(e,'SUBMITTED')
         e.preventDefault() 
         setSubmitted(true)
         
-      
-        if(submitted && inValidEmail ){
+        if(inValidEmail ){
             console.log(email,password)
             let payload = {
                 email: email,

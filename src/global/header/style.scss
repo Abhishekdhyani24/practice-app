@@ -1,2 +1,69 @@
 
+  /* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Announcement Bar */
+  .announcement-bar {
+    background-color: #9e9172;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    overflow: hidden;
+  }
+  
+  .announcement-slider {
+    display: flex;
+    animation: slide 15s infinite;
+  }
+  
+  .announcement-slider p {
+    margin: 0;
+    flex: 0 0 100%;
+  }
+  
+  @keyframes slide {
+    0% {
+      transform: translateX(0%);
+    }
+    33% {
+      transform: translateX(-100%);
+    }
+    66% {
+      transform: translateX(-200%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    // background-color: #39424d;
+
+    background: linear-gradient(90deg, rgb(2, 0, 36) 0%, rgb(9, 9, 121) 35%, rgb(0, 212, 255) 100%);
+  }
+  .search-bar{
+    color: #ffffff;
+    margin-top: 10px;
+    font-family: sans-serif;
+
+  }
+  
+
+
+
+
+  
+
+  
+
+
+  
   

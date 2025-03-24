@@ -13,16 +13,16 @@ import Swal from "sweetalert2";
 
 const Users = () => {
     const navigate = useNavigate()
-  
+
     const [filters, setFilter] = useState({ page: 1, count: 10, search: "" });
     const [userData, setUserData] = useState([]);
-    const [total,setTotal]=useState(0);
-    const [role,setRole]=useState('');
+    const [total, setTotal] = useState(0);
+    const [role, setRole] = useState('');
 
 
     useEffect(() => {
         getUserList()
-    }, [filters,role])
+    }, [filters, role])
 
     function getUserList() {
         loader(true);
@@ -41,7 +41,7 @@ const Users = () => {
             navigate(`/users/edit/${id}`)
         }
     }
-    
+
     function view(id) {
         console.log(id);
 
@@ -80,13 +80,13 @@ const Users = () => {
     return (
         <>
             <Layout>
-                <h1>Users List</h1>
+                <h3 className="mb-3 pt-2 d-flex">Users List</h3>
                 {/* <button className="btn btn-primary">Add User</button> */}
                 <div className="d-flex gap-3">
-                <Link to='/users/add' className="btn btn-primary">Add User</Link>
+                    <Link to='/users/add' className="btn btn-primary">Add User</Link>
 
-            
-                    <select name="" id="" className="form-control w-25" value={role} onChange={(e)=>{
+
+                    <select name="" id="" className="form-control w-25" value={role} onChange={(e) => {
                         setRole(e.target.value)
                     }}>
                         <option value="" selected>Select Role</option>
@@ -94,11 +94,11 @@ const Users = () => {
                         <option value="mentor">Mentor</option>
 
                     </select>
-{
-    role && <button className="btn btn-secondary" onClick={()=>{setRole('')}}>Reset</button>
-}
-                    
-                    </div>
+                    {
+                        role && <button className="btn btn-secondary" onClick={() => { setRole('') }}>Reset</button>
+                    }
+
+                </div>
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -151,9 +151,9 @@ const Users = () => {
                         itemsCountPerPage={10}
                         totalItemsCount={total}
                         pageRangeDisplayed={5}
-                        onChange={(e) => handlePageChange(e)}                   
-                       itemClass="page-item"
-                       linkClass="page-link"
+                        onChange={(e) => handlePageChange(e)}
+                        itemClass="page-item"
+                        linkClass="page-link"
                     />
                 </div>
             </Layout>
