@@ -19,7 +19,7 @@ const Login = () => {
           }
     })
 
-    const handleSubmit= async(e) => {
+    function handleSubmit(e) {
         e.preventDefault() 
         setSubmitted(true)
         
@@ -31,13 +31,15 @@ const Login = () => {
                 password:password,
               };
 
-            const res = await ApiClient.post('admin/signin',payload);
-            if(res.success){
+            ApiClient.post('admin/signin',payload).then((res)=>{
+              if(res.success){
                 setSubmitted(false);
                 sessionStorage.setItem("token", res?.data.access_token);
                 navigate("/home")
 
             }
+            })
+          
             
         }
 

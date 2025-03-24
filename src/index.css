@@ -54,6 +54,83 @@ button:focus-visible {
   left: 0;
   top: 0;
 }
+
+.mobile_number .form-control {
+  width: 100% !important;
+  position: relative;
+  height: 2.5rem !important;
+  align-items: center;
+  border: none;
+  display: flex;
+  border-radius: 0.5rem !important;
+  --tw-bg-opacity: 1 !important;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity)) !important;
+  --tw-shadow: 0px 0px 0px 1px rgba(18, 55, 105, 0.08), 0px 1px 2px 0px rgba(164, 172, 185, 0.24) !important;
+  --tw-shadow-colored: 0px 0px 0px 1px var(--tw-shadow-color), 0px 1px 2px 0px var(--tw-shadow-color) !important;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
+}
+
+
+.mobile_number .react-tel-input .flag-dropdown {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  border: 1px solid #fff;
+  border-radius: 0.5rem 0 0 0.5rem !important;
+}
+
+
+.clicks {
+  .form-control {
+      width: 100% !important;
+      height: 2.5rem !important;
+      border-radius: 0.5rem !important;
+  }
+}
+
+.bg-white {
+  background-color: #fff !important;
+  height: 146px;
+  width: 157px;
+}
+
+.card {
+  padding: 2em;
+  width: fit-content;
+}
+
+/* .dropdown_color .react-tel-input .flag-dropdown {
+  background: #232323 !important;
+  border-color: #383838 !important;
+  border: none !important;
+}
+.react-tel-input .form-control {
+  width: 100%;
+  border-radius: 8px !important;
+}
+.react-tel-input .flag-dropdown {
+  border-radius: 8px 0 0 8px !important;
+}
+.react-tel-input .selected-flag {
+  border-radius: 8px 0 0 8px !important;
+}
+
+.input_number .flag-dropdown {
+  background: none !important;
+  border: none !important;
+}
+
+.dropdown_color .react-tel-input .flag-dropdown {
+  background: #232323 !important;
+  border-color: #383838 !important;
+  border: none !important;
+}
+
+.flag-dropdown {
+  border-radius: 0.5rem 0 0 0.5rem !important;
+} */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

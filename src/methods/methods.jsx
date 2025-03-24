@@ -55,7 +55,7 @@ const userImg = (img, modal = 'img') => {
   let value = "/images/person.jpg";
   // if (img) value = environment.api + 'img/' + img
   // if (img) value = img;
-  if (img) value = `${environment.api}static/${img}`;
+  if (img) value = `${environment.api}${img}`;
   return value;
 };
 
