@@ -9,8 +9,30 @@ import 'react-phone-input-2/lib/style.css'
 import { RxCross2 } from "react-icons/rx";
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import environment from "../../environment";
+import Editor from '@monaco-editor/react';
+import 'monaco-editor/min/vs/editor/editor.main.css';
 
-
+const options = {
+  autoIndent: 'full',
+  contextmenu: true,
+  fontFamily: 'monospace',
+  fontSize: 13,
+  lineHeight: 24,
+  hideCursorInOverviewRuler: true,
+  matchBrackets: 'always',
+  minimap: {
+    enabled: true,
+  },
+  scrollbar: {
+    horizontalSliderSize: 4,
+    verticalSliderSize: 18,
+  },
+  selectOnLineNumbers: true,
+  roundedSelection: false,
+  readOnly: false,
+  cursorStyle: 'line',
+  automaticLayout: true,
+}; 
 
 const UsersAdd = () => {
   const navigate = useNavigate();
@@ -28,7 +50,7 @@ const UsersAdd = () => {
     email: "",
     mobileNo: "",
     image: "",
-    address:""
+    address: ""
   });
   const [submit, setSubmit] = useState(false);
   const inValidEmail = methodModel.emailvalidation(userData.email);
@@ -73,7 +95,7 @@ const UsersAdd = () => {
           email: res.data.email,
           mobileNo: res.data.mobileNo,
           image: res.data.image,
-          address:res.data.address
+          address: res.data.address
         });
       }
     });
@@ -92,7 +114,7 @@ const UsersAdd = () => {
       }
       loader(false)
     })
- 
+
   };
 
   function onChangeNumber(e) {
@@ -103,22 +125,22 @@ const UsersAdd = () => {
     setUserData({ ...userData, image: '' })
   }
 
-  function selectAddress(e){
-    console.log(e,"selectedAddress");
+  function selectAddress(e) {
+    console.log(e, "selectedAddress");
     setUserData({ ...userData, address: e.label })
 
-    
+
   }
 
   return (
     <>
       <Layout>
         <div className="d-flex justify-content-between align-item-center">
-        <h2> {userId ? "Edit" : "Add"} User</h2>
-        <Link to="/users">
-          {" "}
-          <LuArrowBigLeft  className="backIcon"/>
-        </Link>
+          <h2> {userId ? "Edit" : "Add"} User</h2>
+          <Link to="/users">
+            {" "}
+            <LuArrowBigLeft className="backIcon" />
+          </Link>
         </div>
         <form onSubmit={handelSubmit} className="text-align-left">
           <div className="form-row ">
@@ -193,11 +215,11 @@ const UsersAdd = () => {
                   apiKey={environment.map_api_key}
                   value={userData.address}
                   selectProps={{
-                    onChange:(e)=>selectAddress(e),
+                    onChange: (e) => selectAddress(e),
                     // value:userData.address
                   }}
                   defaultValue={userData.address}
-                  
+
                 />
               </div>
 
@@ -224,7 +246,26 @@ const UsersAdd = () => {
 
 
             </div>
+
+
+            <div className="form-group col-md-6">
+              <label>Description</label>
+              <Editor
+                height="40vh"
+                defaultLanguage="javascript"
+                defaultValue="// some comment"
+                options={{
+                  lineNumbers: "on",
+                  minimap: {
+                    enabled: true
+                  },
+                  scrollBeyondLastLine: false,
+                }}
+              />
+
+            </div>
           </div>
+
 
           <button type="submit" className="btn btn-primary mt-2">
             Save
