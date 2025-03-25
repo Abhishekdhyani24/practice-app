@@ -27,9 +27,10 @@ const QuestionsAdd = () => {
     }]);
 
     function removeOption(i){
+
         console.log(i,'index')
         let dummy=[...answers]
-        dummy.splice(1,i)
+        dummy.splice(i,1)
 
         setAnswers(dummy)
 
@@ -179,7 +180,9 @@ const QuestionsAdd = () => {
                                             }
                                             } />
 
-                                        <RxCross2 onClick={()=>removeOption(i)} /><br></br>
+                                       {
+                                        answers.length>1 && <><RxCross2 onClick={()=>removeOption(i)} /><br></br></>
+                                       } 
                                     </span>
                                 )
                             }
