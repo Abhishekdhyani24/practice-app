@@ -9,13 +9,18 @@ import Home from './pages/home'
 import Users from './pages/users';
 import UsersAdd from './pages/users/add';
 import image from '../src/assets/loader.gif'
+import { Provider } from "react-redux";
+import configureStoreProd from "./config/configureStore.prod";
+import { PersistGate } from "redux-persist/integration/react";
 
+
+const { persistor, store } = configureStoreProd();
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
+     <Provider store={store}>
+     <PersistGate loading={"loading ..."} persistor={persistor}>
     <Router>
     <Suspense fallback={
               <div id="loader" className="loaderDiv">
@@ -34,7 +39,8 @@ function App() {
 
     </Routes>
     </Router>
-  
+    </PersistGate>
+    </Provider>
     </>
   )
 }

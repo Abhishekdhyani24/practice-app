@@ -2,12 +2,15 @@ import {React,useEffect,useState} from 'react';
 import methodModel from "../../methods/methods";
 import { useNavigate } from "react-router-dom";
 import ApiClient from "../../methods/api";
+import { login_success } from "../../actions/user";
+import { useDispatch } from "react-redux";
 import "./style.scss";
 
 
 
 const Login = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -37,6 +40,7 @@ const Login = () => {
               if(res.success){
                 setSubmitted(false);
                 sessionStorage.setItem("token", res?.data.access_token);
+                dispatch(login_success(res?.data));
                 navigate("/home")
 
             }

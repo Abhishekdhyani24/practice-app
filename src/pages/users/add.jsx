@@ -7,10 +7,15 @@ import { LuArrowBigLeft } from "react-icons/lu";
 import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css'
 import { RxCross2 } from "react-icons/rx";
-import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+// import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import environment from "../../environment";
 import Editor from '@monaco-editor/react';
-import 'monaco-editor/min/vs/editor/editor.main.css';
+import Autocomplete from "react-google-autocomplete";
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import ReactQuill from 'react-quill';
+// import 'react-quill/dist/quill.snow.css';
+// import 'monaco-editor/min/vs/editor/editor.main.css';
 
 const options = {
   autoIndent: 'full',
@@ -32,17 +37,12 @@ const options = {
   readOnly: false,
   cursorStyle: 'line',
   automaticLayout: true,
-}; 
+};
 
 const UsersAdd = () => {
   const navigate = useNavigate();
   const userId = useParams().id;
   console.log(userId, "useId");
-  useEffect(() => {
-    if (userId) {
-      getUserDetails(userId);
-    }
-  }, []);
 
   const [userData, setUserData] = useState({
     firstName: "",
@@ -52,8 +52,17 @@ const UsersAdd = () => {
     image: "",
     address: ""
   });
+
   const [submit, setSubmit] = useState(false);
   const inValidEmail = methodModel.emailvalidation(userData.email);
+
+
+  useEffect(() => {
+    if (userId) {
+      getUserDetails(userId);
+    }
+  }, []);
+
 
   function handelSubmit(e) {
     e.preventDefault();
@@ -97,6 +106,8 @@ const UsersAdd = () => {
           image: res.data.image,
           address: res.data.address
         });
+
+
       }
     });
   }
@@ -131,6 +142,18 @@ const UsersAdd = () => {
 
 
   }
+
+  const handlePlaceSelected = (place) => {
+    console.log(place);
+    // Optionally, update address based on selected place
+    setUserData({ ...userData, address: place.formatted_address });
+  };
+
+  const handleAddressChange = (e) => {
+    setUserData({ ...userData, address: e.target.value });
+  };
+
+  console.log(userData.address, 'userData.address')
 
   return (
     <>
@@ -211,15 +234,27 @@ const UsersAdd = () => {
             <div className="form-group col-md-6">
               <label>Address</label>
               <div className="mobile_number mb-3 clicks">
-                <GooglePlacesAutocomplete
+                {/* <GooglePlacesAutocomplete
                   apiKey={environment.map_api_key}
                   value={userData.address}
-                  selectProps={{
-                    onChange: (e) => selectAddress(e),
-                    // value:userData.address
-                  }}
+                  key={userData.address}
                   defaultValue={userData.address}
 
+                  selectProps={{
+                    onChange: (e) => selectAddress(e),
+                    value:userData.address
+                  }}
+                  editable={true}
+
+
+                /> */}
+
+                <Autocomplete
+                className="form-control"
+                 apiKey={environment.map_api_key}
+                  onPlaceSelected={handlePlaceSelected}
+                  value={userData.address}
+                  onChange={handleAddressChange}
                 />
               </div>
 
@@ -250,7 +285,7 @@ const UsersAdd = () => {
 
             <div className="form-group col-md-6">
               <label>Description</label>
-              <Editor
+              {/* <Editor
                 height="40vh"
                 defaultLanguage="javascript"
                 defaultValue="// some comment"
@@ -261,7 +296,9 @@ const UsersAdd = () => {
                   },
                   scrollBeyondLastLine: false,
                 }}
-              />
+              /> */}
+
+{/* <ReactQuill theme="snow" />; */}
 
             </div>
           </div>

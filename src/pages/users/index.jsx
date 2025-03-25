@@ -4,6 +4,7 @@ import ApiClient from "../../methods/api";
 import { Link, useNavigate } from "react-router-dom";
 import { LiaEdit, LiaTrashAlt } from "react-icons/lia";
 import { Tooltip } from "antd";
+import '@ant-design/v5-patch-for-react-19';
 import Pagination from "react-js-pagination";
 import { PiEyeLight } from "react-icons/pi";
 

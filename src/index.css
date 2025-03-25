@@ -107,36 +107,7 @@ button:focus-visible {
   margin: 7px;
 }
 
-/* .dropdown_color .react-tel-input .flag-dropdown {
-  background: #232323 !important;
-  border-color: #383838 !important;
-  border: none !important;
-}
-.react-tel-input .form-control {
-  width: 100%;
-  border-radius: 8px !important;
-}
-.react-tel-input .flag-dropdown {
-  border-radius: 8px 0 0 8px !important;
-}
-.react-tel-input .selected-flag {
-  border-radius: 8px 0 0 8px !important;
-}
 
-.input_number .flag-dropdown {
-  background: none !important;
-  border: none !important;
-}
-
-.dropdown_color .react-tel-input .flag-dropdown {
-  background: #232323 !important;
-  border-color: #383838 !important;
-  border: none !important;
-}
-
-.flag-dropdown {
-  border-radius: 0.5rem 0 0 0.5rem !important;
-} */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

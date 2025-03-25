@@ -7,21 +7,39 @@
   
   body {
     font-family: 'Arial', sans-serif;
-
-    color: #ffffff;
-
+    // color: #ffffff;
   }
   
+section{
+  background:rgb(168, 240, 255);
+  color: #20006b;
+  height: 100vh;
 
+}
   .hero {
-    height: 100vh;
     display: flex;
+    text-align: center;
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin: auto;
     // background: linear-gradient(90deg, rgb(2, 0, 36) 0%, rgb(109, 109, 214) 35%, rgb(131, 224, 243) 100%);
-    background:rgb(168, 240, 255);
-color: #20006b;
+   
+  }
+
+  .graph {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    // background: linear-gradient(90deg, rgb(2, 0, 36) 0%, rgb(109, 109, 214) 35%, rgb(131, 224, 243) 100%);
+   
+  }
+  
+  .hero-content  {
+    margin-top: 30px;
   }
   
   .hero-content h1 {
