@@ -61,7 +61,7 @@ const QuestionsAdd = () => {
                 if (res.success) {
                     console.log(res.data, "USERDATA");
                     setSubmit(false);
-                    navigate("/users");
+                    navigate("/question");
                 }
             });
         } else {
@@ -69,23 +69,25 @@ const QuestionsAdd = () => {
                 if (res.success) {
                     console.log(res.data, "USERDATA");
                     setSubmit(false);
-                    navigate("/users");
+                    navigate("/question");
                 }
             });
         }
     }
 
     function getUserDetails(id) {
-        ApiClient.get(`user/details?id=${id}`).then((res) => {
+        ApiClient.get(`question?id=${id}`).then((res) => {
             if (res.success) {
                 setUserData({
-                    firstName: res.data.firstName,
-                    lastName: res.data.lastName,
-                    email: res.data.email,
-                    mobileNo: res.data.mobileNo,
-                    image: res.data.image,
-                    address: res.data.address
+                    question: res.data.question,
+                    answer_type: res.data.answer_type,
+                    question_order: res.data.question_order,
+                    about_question: res.data.about_question,
+                    category: res.data.category,
+                    options: res.data.options
                 });
+
+                setAnswers(res.data.options)
 
 
             }
