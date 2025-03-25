@@ -26,7 +26,14 @@ const Sidebar = () => {
             >
                 <span>Manage Users</span>
             </NavLink>
-            <a href="#contact">Contact</a>
+            <NavLink
+                className={(navData) =>
+                    navData.isActive ? "active" : ""
+                }
+                to="/question"
+            >
+                <span>Questions</span>
+            </NavLink>
             <a href="#about">About</a>
         </div>
     )

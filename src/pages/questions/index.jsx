@@ -8,11 +8,13 @@ import '@ant-design/v5-patch-for-react-19';
 import Pagination from "react-js-pagination";
 import { PiEyeLight } from "react-icons/pi";
 
+import moment from "moment";
+
 import loader from "../../methods/loader";
 import Swal from "sweetalert2";
 
 
-const Users = () => {
+const Questions = () => {
     const navigate = useNavigate()
 
     const [filters, setFilter] = useState({ page: 1, count: 10, search: "" });
@@ -29,11 +31,12 @@ const Users = () => {
 
     function getUserList() {
         loader(true);
-        ApiClient.get(`users/list?page=${filters.page}&search=${filters.search}&count=${filters.count}&role=${role}&isDeleted=false`).then((res) => {
+        ApiClient.get(`all/questions?page=${filters.page}&search=${filters.search}&count=${filters.count}&sortBy=question_order asc
+&isDeleted=false`).then((res) => {
             if (res.success) {
                 console.log(res.data, 'res.data')
-                setUserData(res.data)
-                setTotal(res.total)
+                setUserData(res.data.data)
+                setTotal(res.data.total_count)
                 loader(false);
             }
         })
@@ -41,7 +44,7 @@ const Users = () => {
 
     function edit(id) {
         if (id) {
-            navigate(`/users/edit/${id}`)
+            navigate(`/question/edit/${id}`)
         }
     }
 
@@ -83,27 +86,18 @@ const Users = () => {
     return (
         <>
             <Layout>
-                <h3 className="mb-3 pt-2 d-flex">Users List</h3>
+                <h3 className="mb-3 pt-2 d-flex">Question List</h3>
                 {/* <button className="btn btn-primary">Add User</button> */}
                 <div className="d-flex gap-3">
-                    <Link to='/users/add' className="btn btn-primary">Add User</Link>
+                    <Link to='/question/add' className="btn btn-primary">Add Question</Link>
 
 
-                    <select name="" id="" className="form-control w-25" value={role} onChange={(e) => {
-                        setRole(e.target.value)
-                    }}>
-                        <option value="" selected>Select Role</option>
-                        <option value="user">User</option>
-                        <option value="mentor">Mentor</option>
-
-                    </select>
                     <form > <input  placeholder='Search' type="text" className="form-control" value={filters.search}  onChange={(e)=>setFilter({...filters,search:e.target.value})} />
-                    
-                    
+ 
                     </form>
 
                     {
-                        (role || filters.search) && <button  className="btn btn-secondary" onClick={() => { setRole('');setFilter({...filters,search:''}) }}>Reset</button>
+                        (filters.search) && <button  className="btn btn-secondary" onClick={() => { setRole('');setFilter({...filters,search:''}) }}>Clear</button>
                     }
 
                 </div>
@@ -111,9 +105,9 @@ const Users = () => {
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Role</th>
-                            <th scope="col">Email</th>
+                            <th scope="col">Question</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">created At</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -123,9 +117,9 @@ const Users = () => {
                             userData.length > 0 && userData.map((res, i) =>
                                 <tr key={i}>
                                     <th scope="row">{i + 1}</th>
-                                    <td>{res.fullName}</td>
-                                    <td>{res.role}</td>
-                                    <td>{res.email}</td>
+                                    <td>{res.question}</td>
+                                    <td>{res.catType}</td>
+                                    <td>{moment(res.createdAt).format("MM/DD/YYYY")} </td>
                                     <td>{res.status}</td>
                                     <td>
                                         {/* <Tooltip placement="top" title="View">
@@ -169,4 +163,4 @@ const Users = () => {
     )
 }
 
-export default Users;
+export default Questions;

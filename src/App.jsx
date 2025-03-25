@@ -8,6 +8,9 @@ import Login from './pages/auth/login'
 import Home from './pages/home'
 import Users from './pages/users';
 import UsersAdd from './pages/users/add';
+import Questions from './pages/questions'
+import QuestionsAdd from './pages/questions/add'
+
 import image from '../src/assets/loader.gif'
 import { Provider } from "react-redux";
 import configureStoreProd from "./config/configureStore.prod";
@@ -33,6 +36,10 @@ function App() {
     <Route  path="/users" element={<Users />} />
     <Route  path="/users/add" element={<UsersAdd />} />
     <Route  path="/users/edit/:id" element={<UsersAdd />} />
+
+    <Route  path="/question" element={<Questions />} />
+    <Route  path="/question/add" element={<QuestionsAdd />} />
+    <Route  path="/question/edit/:id" element={<QuestionsAdd />} />
 
 
 

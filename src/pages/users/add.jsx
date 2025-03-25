@@ -17,28 +17,6 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 // import 'react-quill/dist/quill.snow.css';
 // import 'monaco-editor/min/vs/editor/editor.main.css';
 
-const options = {
-  autoIndent: 'full',
-  contextmenu: true,
-  fontFamily: 'monospace',
-  fontSize: 13,
-  lineHeight: 24,
-  hideCursorInOverviewRuler: true,
-  matchBrackets: 'always',
-  minimap: {
-    enabled: true,
-  },
-  scrollbar: {
-    horizontalSliderSize: 4,
-    verticalSliderSize: 18,
-  },
-  selectOnLineNumbers: true,
-  roundedSelection: false,
-  readOnly: false,
-  cursorStyle: 'line',
-  automaticLayout: true,
-};
-
 const UsersAdd = () => {
   const navigate = useNavigate();
   const userId = useParams().id;
