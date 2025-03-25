@@ -16,7 +16,6 @@ const QuestionsAdd = () => {
         question: "",
         answer_type: "",
         question_order: "",
-        about_question: "",
         category: "6615443c17528a9d67b881fa",
         options: []
     });
@@ -82,7 +81,6 @@ const QuestionsAdd = () => {
                     question: res.data.question,
                     answer_type: res.data.answer_type,
                     question_order: res.data.question_order,
-                    about_question: res.data.about_question,
                     category: res.data.category,
                     options: res.data.options
                 });
@@ -158,7 +156,7 @@ const QuestionsAdd = () => {
                             />
                         </div>
 
-                        <div className="form-group col-md-6 ">
+                        {/* <div className="form-group col-md-6 ">
                             <label>About Question</label>
 
                             <textarea className="form-control" value={userData?.about_question}
@@ -166,7 +164,7 @@ const QuestionsAdd = () => {
                                     setUserData({ ...userData, about_question: e.target.value })
                                 } placeholder="About Question"></textarea>
 
-                        </div>
+                        </div> */}
 
                         <div className="form-group col-md-6 ">
                             <label>Answers</label>

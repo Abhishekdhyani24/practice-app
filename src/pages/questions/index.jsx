@@ -31,7 +31,7 @@ const Questions = () => {
 
     function getUserList() {
         loader(true);
-        ApiClient.get(`all/questions?page=${filters.page}&search=${filters.search}&count=${filters.count}&sortBy=question_order asc
+        ApiClient.get(`all/questions?page=${filters.page}&search=${filters.search}&count=${filters.count}&sortBy=question_order desc
 &isDeleted=false`).then((res) => {
             if (res.success) {
                 console.log(res.data, 'res.data')
@@ -56,7 +56,7 @@ const Questions = () => {
     const deleteItem = (id) => {
         Swal.fire({
             title: "Are you sure?",
-            text: `Do you want to delete this User`,
+            text: `Do you want to delete this Question`,
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#1D97DB",
@@ -65,7 +65,7 @@ const Questions = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 loader(true);
-                ApiClient.delete("delete", { id: id, model: "users" }).then((res) => {
+                ApiClient.delete("question", { id: id, model: "url" }).then((res) => {
                     if (res.success) {
                         getUserList();
                     }
